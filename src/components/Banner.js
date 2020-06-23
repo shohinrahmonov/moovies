@@ -26,7 +26,7 @@ const Banner = ({movieID, selectedMovie, casts, findMovieWithId, findCastWithId,
             <BannerWrapper className={loading ? 'spinner-height' : null}>
                 {loading ? <Spin size="large" /> :
                 <div className="movie-preview-container" >
-                    {selectedMovie.backdrop_path !== null ? <div className="image-backdrop" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${selectedMovie.backdrop_path})`}} /> : <div className="image-backdrop" style={{backgroundImage: `url(${bg1})`}} />}
+                    {selectedMovie.backdrop_path !== null ? <div className="image-backdrop" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}} /> : <div className="image-backdrop" style={{backgroundImage: `url(${bg1})`}} />}
                         <Container className="custom-class-container">
                             <div className="movie-details">
                                 <h1>{selectedMovie.title}</h1>

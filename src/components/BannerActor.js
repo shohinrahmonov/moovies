@@ -20,7 +20,7 @@ const BannerActor = ({movieID, findActorWithId, selectedActor, loading }) => {
         <>
             <BannerActorWrapper className={loading ? 'spinner-height' : null}>
                 {loading ? <Spin size="large" /> : ( selectedActor && <div className="movie-preview-container" >
-                        <div className="image-backdrop" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${selectedActor.profile_path})`}} />
+                        <div className="image-backdrop" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedActor.profile_path})`}} />
                         <Container className="custom-class-container">
                             <div className="movie-details">
                                 <h1>{selectedActor.name}</h1>

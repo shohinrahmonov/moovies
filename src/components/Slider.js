@@ -52,7 +52,7 @@ function Slider({fetchPopular, popularMovies, fetchGenres, allGenres}){
         <CarouselWrapper>
                 <Carousel ref={customSlider} {...sliderSettings} >
                 {popularMovies && popularMovies.slice(8, 14).map(movie=> <div key={movie.id}>
-                        <div className="movie-image-bg" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`}}>
+                        <div className="movie-image-bg" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
                             <div className="movie-slider-item">
                                 <div className="movie-text-container">
                                     <Link to={{pathname: `/movie/${movie.id}`}}><h2>{movie.title}</h2></Link>
