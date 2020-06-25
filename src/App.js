@@ -18,7 +18,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/movies" component={Movies}/>
-          <Route path="/movie/:id" component={MoviePreview}/>
+          <Route path="/details/:id" component={MoviePreview}/>
           <Route path="/actor/:id" component={ActorDetails}/>
           <Route exact path="/" component={Dashboard}/>
           <Route path="/" component={NotFound}/>

@@ -4,23 +4,28 @@ import RelativeMovieCarousel from '../components/RelativeMovieCarousel';
 import PeopleList from '../components/PeopleList';
 import { findMovie } from '../actions';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Error from '../components/Error'
 
 
 const MoviePreview = ({ findMovieWithId, error }) => {
-    let { id } = useParams();
 
+    let location = useLocation();
+
+    // Get the type of the media
+    const type = location.pathname.split('/')[2];
+    const id = location.pathname.split('/')[3];
+        
     useEffect(()=>{
-        findMovieWithId(id);
-    }, [findMovieWithId, id])
+        findMovieWithId(type, id);
+    }, [findMovieWithId, id, type])
         
     return ( 
         <>
             {error ? (<Error error="Movie not found. Please try again." /> ) : (<div>
-                <Banner movieID={id} />
-               <RelativeMovieCarousel movieID={id}/>
-               <PeopleList movieID={id}/>
+                <Banner movieID={id} type={type} />
+               <RelativeMovieCarousel movieID={id} type={type}/>
+               <PeopleList movieID={id} type={type} />
             </div> )}
         </>
      );

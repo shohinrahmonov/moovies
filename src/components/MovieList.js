@@ -29,7 +29,7 @@ const MovieList = ({movies, fetchMoviesFromAPI, loading, loadingMorePages, error
         <MovieListWrapper>
             { loading && (<Spin  size="large"/>) && error ? (<Error error="Failed to load Trending Movies" />) :  <> <div className="movies-list">
                             <h1>Trending Movies</h1>
-                            {movies && movies.map(movie=> <Link to={{pathname: `/movie/${movie.id}`}} key={movie.id}><Movie image={movie.poster_path} title={movie.title ? movie.title : movie.name} overview={movie.overview}/></Link>)}
+                            {movies && movies.map(movie=> <Link to={{pathname: `/details/${movie.media_type}/${movie.id}`}} key={movie.id}><Movie image={movie.poster_path} title={movie.title ? movie.title : movie.name} overview={movie.overview}/></Link>)}
                         </div>
                         <Button type="primary" size="large"  loading={loadingMorePages ? 1 : 0} onClick={updatePageHandler}>Load More</Button>
             </>}
@@ -38,6 +38,8 @@ const MovieList = ({movies, fetchMoviesFromAPI, loading, loadingMorePages, error
 }
 
 const mapStateToProps =(state)=>{
+    console.log('movie-list', state.movies.moviesList);
+    
     return  {
         movies: state.movies.moviesList,
         loading: state.movies.loading,

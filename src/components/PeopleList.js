@@ -8,22 +8,23 @@ import { Link } from 'react-router-dom';
 import { CastTableWrapper, TableDropdownContent } from '../style/CastTableWrapper'
 
 
-const PeopleList = ({movieID, casts, findCastWithId }) => {
+const PeopleList = ({type, movieID, casts, findCastWithId }) => {
    
     useEffect(()=>{
-        findCastWithId(movieID);
-    }, [findCastWithId, movieID])
+        findCastWithId(type, movieID);
+    }, [findCastWithId, type, movieID])
 
       let dataSource = casts.cast && casts.cast.map(c=>{
+        let dataKey = c.cast_id ? c.cast_id : c.id;
           return {
-              key: c.cast_id,
+              key: dataKey,
               name: c.name,
               character: c.character,
               profile_path: c.profile_path,
               id: c.id
           }
-      })
-
+      });
+      
       const innerTable = (record)=>{
             return<>
                 <TableDropdownContent>

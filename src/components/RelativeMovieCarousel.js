@@ -13,11 +13,11 @@ import { RelativeCarouselWrapper } from '../style/RelativeCarouselWrapper';
 
 
 
-function RelativeCarousel({ movieID, findSimilarWithId, similar, loading }){
+function RelativeCarousel({type, movieID, findSimilarWithId, similar, loading }){
 
     useEffect(()=>{
-        findSimilarWithId(movieID);
-    }, [findSimilarWithId, movieID])
+        findSimilarWithId(type, movieID);
+    }, [findSimilarWithId, type, movieID])
 
     
     const customSlider  = React.useRef()

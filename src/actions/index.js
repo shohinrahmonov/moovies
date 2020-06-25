@@ -50,16 +50,16 @@ export const fetchGenres = () =>{
     }
 }
 
-export const findMovie = (id)=>{
+export const findMovie = (type, id )=>{
     
     return async dispatch => {
         try{
             dispatch({ type: Type.FETCH_MOVIE_REQUEST});
             
-            const response = await movieDbApi.get(`/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images`);
+            const response = await movieDbApi.get(`/3/${type}/${id}?api_key=${API_KEY}&append_to_response=videos,images`);
             
             await dispatch({type: Type.FIND_MOVIE, payload: response.data});
-
+            
             setTimeout(() => {
                 dispatch({type: Type.FETCH_MOVIE_SUCCESS});
             }, 1000);
@@ -94,11 +94,11 @@ export const findActor = (id)=>{
 }
 
 
-export const findSimilar = (id)=>{
+export const findSimilar = (type, id)=>{
     return async dispatch => {
         try{
             dispatch({ type: Type.FETCH_MOVIE_REQUEST});
-            const response = await movieDbApi.get(`/3/movie/${id}/similar?api_key=${API_KEY}`);
+            const response = await movieDbApi.get(`/3/${type}/${id}/similar?api_key=${API_KEY}`);
             
             dispatch({type: Type.FIND_SIMILAR, payload: response.data})
 
@@ -129,10 +129,10 @@ export const findTrailer = (id)=>{
         
     }
 }
-export const findCast = (id)=>{
+export const findCast = (type, id)=>{
     return async dispatch => {
         try{
-            const response = await movieDbApi.get(`/3/movie/${id}/credits?api_key=${API_KEY}`);
+            const response = await movieDbApi.get(`/3/${type}/${id}/credits?api_key=${API_KEY}`);
 
             dispatch({type: Type.FIND_CAST, payload: response.data});
 

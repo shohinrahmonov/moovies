@@ -11,14 +11,14 @@ import { BannerWrapper } from '../style/BannerWrapper';
 
 
 
-const Banner = ({movieID, selectedMovie, casts, findMovieWithId, findCastWithId, loading }) => {
+const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastWithId, loading }) => {
 
     const [visible, setVisible] = useState(false);
-   
+    
     useEffect(()=>{
-        findMovieWithId(movieID);
-        findCastWithId(movieID);
-    }, [findMovieWithId, findCastWithId, movieID])
+        findMovieWithId(type, movieID);
+        findCastWithId(type, movieID);
+    }, [findMovieWithId, type, findCastWithId, movieID])
 
     const description = ['Terrible', 'Bad', 'Normal', 'Good', 'Wonderful'];
     return ( 
