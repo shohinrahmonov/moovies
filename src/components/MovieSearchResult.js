@@ -36,7 +36,7 @@ const MovieList = ({movies, fetchMovieQuery, loading, error}) => {
                     {query && <h3>Result: {query}</h3>}
                     {loading ? <Spin size="large" /> : <div className="search-movies-container">
                         {movies.results && movies.results.length > 0 ? movies.results.map(movie=> <Link to={{
-                            pathname: `/movie/${movie.id}`
+                            pathname: `/details/${movie.media_type}/${movie.id}`
                         }} key={movie.id}><Movie image={movie.poster_path ? movie.poster_path : movie.backdrop_path } title={movie.title ? movie.title : movie.name} overview={movie.overview}/></Link>) : query && <div className="not-found-class">Not Found</div>}
                     </div>}
                 </div>}

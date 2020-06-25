@@ -75,6 +75,7 @@ function RelativeActorCarousel({type, movieID, findActorWithId, selectedActor, l
 }
  
 const mapStateToProps = (state)=>{
+    
     return {
         selectedActor: state.people.selectedActor,
         loading: state.people.loading
