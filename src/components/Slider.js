@@ -55,7 +55,7 @@ function Slider({fetchPopular, popularMovies, fetchGenres, allGenres}){
                         <div className="movie-image-bg" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
                             <div className="movie-slider-item">
                                 <div className="movie-text-container">
-                                    <Link to={{pathname: `/movie/${movie.id}`}}><h2>{movie.title}</h2></Link>
+                                    <Link to={{pathname: `/details/movie/${movie.id}`}}><h2>{movie.title}</h2></Link>
                                     <div className="movie-info">
                                         <RightSquareOutlined />
                                         <p>IMDb <b>{movie.vote_average}</b></p>
