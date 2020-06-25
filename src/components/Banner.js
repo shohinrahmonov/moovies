@@ -29,12 +29,12 @@ const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastW
                     {selectedMovie.backdrop_path !== null ? <div className="image-backdrop" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}} /> : <div className="image-backdrop" style={{backgroundImage: `url(${bg1})`}} />}
                         <Container className="custom-class-container">
                             <div className="movie-details">
-                                <h1>{selectedMovie.title}</h1>
+                                <h1>{selectedMovie.title ?selectedMovie.title : selectedMovie.name}</h1>
                                 <div className="info-badges">
                                     <Rate tooltips={description} allowHalf disabled value={selectedMovie.vote_average/2} />
                                     <Badge count={selectedMovie.vote_count} title="Number of votes" className="site-badge-count-4" style={{ backgroundColor: 'transparent' }} />
-                                    <span>IMDb {selectedMovie.vote_average}  </span>
-                                    <span>{moment.duration(selectedMovie.runtime, "minutes").format("h[h] mm[min]")}</span>
+                                    <span>IMDb {selectedMovie.vote_average} </span>
+                                    <span>{selectedMovie.runtime ?  moment.duration(selectedMovie.runtime, "minutes").format("h[h] mm[min]") : `${selectedMovie.number_of_seasons} seasons`}</span>
                                     <span>{moment(selectedMovie.release_date).format('YYYY')}</span>
                                 </div>
                                 <p className="overview">{selectedMovie.overview}</p>

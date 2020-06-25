@@ -90,7 +90,7 @@ export const CarouselWrapper = styled.div`
     }
     @media(max-width: 512px){
         .movie-text-container{
-            max-width: 30rem;
+            width: auto;
         }
         .movie-slider-item{
             padding: 0 15px;

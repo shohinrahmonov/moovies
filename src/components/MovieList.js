@@ -38,8 +38,6 @@ const MovieList = ({movies, fetchMoviesFromAPI, loading, loadingMorePages, error
 }
 
 const mapStateToProps =(state)=>{
-    console.log('movie-list', state.movies.moviesList);
-    
     return  {
         movies: state.movies.moviesList,
         loading: state.movies.loading,

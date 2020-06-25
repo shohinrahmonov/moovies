@@ -9,13 +9,13 @@ import { connect } from 'react-redux';
 import { RelativeCarouselWrapper } from '../style/RelativeCarouselWrapper';
 import bg1 from '../static/media/bg.jpg';
 
-function RelativeActorCarousel({ movieID, findActorWithId, selectedActor, loading }){
+function RelativeActorCarousel({type, movieID, findActorWithId, selectedActor, loading }){
     
     const customSlider  = React.useRef();
 
     useEffect(()=>{
-        findActorWithId(movieID);
-    }, [findActorWithId, movieID])
+        findActorWithId(type, movieID);
+    }, [findActorWithId, type, movieID])
     
     const [activeSlides, setActiveSlides] = useState({
         activeSlide: 0,
@@ -58,7 +58,7 @@ function RelativeActorCarousel({ movieID, findActorWithId, selectedActor, loadin
                     <Container className="custom-slider-wrapper">
                         <Carousel ref={customSlider} {...sliderSettings}>
                             {selectedActor.movie_credits.cast.map(movie=> <div className="slide" key={movie.id} >
-                                <Link to={{pathname: `/movie/${movie.id}`}}>
+                                <Link to={{pathname: `/details/movie/${movie.id}`}}>
                                     <div className="movie-image-bg" style={movie.poster_path ? {backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path}`} : {backgroundImage: bg1}}>
                                         <h2>{movie.title}</h2>
                                     </div>

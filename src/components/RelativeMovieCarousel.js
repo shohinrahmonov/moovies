@@ -63,7 +63,7 @@ function RelativeCarousel({type, movieID, findSimilarWithId, similar, loading })
                 <Container className="custom-slider-wrapper">
                     <Carousel ref={customSlider} {...sliderSettings}>
                         {similar.map(movie=> <div className="slide" key={movie.id} >
-                            <Link to={{pathname: `/movie/${movie.id}`}}>
+                            <Link to={{pathname: `/details/${type}/${movie.id}`}}>
                                 <div className="movie-image-bg" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`}}>
                                     <h2>{movie.title}</h2>
                                 </div>
