@@ -7,6 +7,7 @@ import Header from './components/Header';
 import MoviePreview from './pages/MoviePreview';
 import ActorDetails from './pages/ActorDetails';
 import Movies from './pages/Movies';
+import Watch from './pages/Watch';
 import ScrollToTop from './helpers/ScrollToTop';
 import NotFound from './components/Error'
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/movies" component={Movies}/>
           <Route path="/details/:id" component={MoviePreview}/>
           <Route path="/actor/:id" component={ActorDetails}/>
+          <Route exact path="/watch-list" component={Watch}/>
           <Route exact path="/" component={Dashboard}/>
           <Route path="/" component={NotFound}/>
         </Switch>

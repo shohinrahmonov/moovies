@@ -157,9 +157,9 @@ export const findPopular = ()=>{
             console.log(new Error(error));
             
         }
-        
     }
 }
+
 export const findQuery = (query)=>{
     return async dispatch => {
         try{
@@ -181,5 +181,11 @@ export const findQuery = (query)=>{
 
         }
         
+    }
+}
+
+export const addWatchList = (id)=>{
+    return {
+        type: 'ADD_WATCHLIST', payload: id
     }
 }

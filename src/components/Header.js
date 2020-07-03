@@ -3,16 +3,17 @@ import { Container } from '../style/Container';
 import { MenuOutlined } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
 import { useScreenSize } from '../helpers/useScreenSize';
-import { Drawer } from 'antd';
+import { Drawer, Badge } from 'antd';
 import { HeaderWrapper } from '../style/HeaderWrapper';
+import { connect } from 'react-redux';
 
 
-
-const Header = () => {
+const Header = ({numbersOfMovies}) => {
     const history = useLocation();
 
     const menuItems = [{title: 'Home', link: '/', active: ''},
-                        {title: 'Movies', link: '/movies'}];
+                        {title: 'Movies', link: '/movies'},
+                        {title: 'Watch List', link: '/watch-list'}];
 
 
     const screenSize = useScreenSize();
@@ -37,11 +38,21 @@ const Header = () => {
                             <h6><span>moo</span>vies</h6>
                         </div>
                     </Link>
+                    
                     <div className="menu-n-search">
                        {screenSize > 600 ? <div className="menu">
-                            {menuItems.map(item=> <Link to={item.link} key={item.title} className={item.link === history.pathname ? `active` : null}>
+                            {menuItems.map(item=> {
+                                if(item.title === 'Watch List'){
+                                   return numbersOfMovies && <Badge key={item.title} className="badge-custom" count={numbersOfMovies.length}>
+                                                <Link to={item.link} key={item.title} className={item.link === history.pathname ? `active` : null}>
                                                     {item.title}
-                                                </Link>)}
+                                                </Link>
+                                            </Badge>
+                                }
+                                return <Link to={item.link} key={item.title} className={item.link === history.pathname ? `active` : null}>
+                                                    {item.title}
+                                                </Link>
+                            })}
                         </div> : <MenuOutlined className="icon-menu" type="primary" onClick={showDrawer}/>}
                     </div>
                 </header>
@@ -62,4 +73,12 @@ const Header = () => {
      );
 }
  
-export default Header;
+
+const mapStateToProps = (state)=>{
+    
+    return{
+        numbersOfMovies: state.watchList
+    }
+}
+
+export default connect(mapStateToProps)(Header);

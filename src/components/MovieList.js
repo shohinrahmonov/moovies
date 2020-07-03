@@ -46,4 +46,4 @@ const mapStateToProps =(state)=>{
     }
 }
 
-export default connect(mapStateToProps, {fetchMoviesFromAPI: fetchMovies})(React.memo(MovieList));
+export default connect(mapStateToProps, {fetchMoviesFromAPI: fetchMovies})(MovieList);

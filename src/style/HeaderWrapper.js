@@ -36,6 +36,7 @@ export const HeaderWrapper = styled.div`
         list-style: none;
         margin-bottom: 0;
         display: flex;
+        align-items: center;
         a{
             color: #626264;
             padding: 1rem;
@@ -45,13 +46,16 @@ export const HeaderWrapper = styled.div`
                 background: #8b69d7;
                 color: #fff;
             }
-            &:not(:last-child){
+            &> :not(:last-child){
                 margin-right: 1rem;
             }
             &:hover{
                 background: #8b69d7;
                 color: #fff;
             }
+        }
+        .badge-custom{
+
         }
     }
     .moovie-logo{

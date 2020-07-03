@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '../style/Container';
-import { Rate, Button, Modal, Badge, Spin } from 'antd';
-import { PlayCircleOutlined } from '@ant-design/icons';
+import { Rate, Button, Modal, Badge, Spin, message } from 'antd';
+import { PlayCircleOutlined, PlusOutlined, CheckOutlined } from '@ant-design/icons';
 import bg1 from '../static/media/bg.jpg';
 import moment from 'moment';
 import momentDuration from 'moment-duration-format';
-import { findCast, findMovie  } from '../actions';
+import { findCast, findMovie, addWatchList} from '../actions';
 import { BannerWrapper } from '../style/BannerWrapper';
 
 
 
-const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastWithId, loading }) => {
+const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastWithId, addWatchList, watchList, loading }) => {
 
     const [visible, setVisible] = useState(false);
+    const [add, setAdd] = useState(false);
+
+
+    const addToWatchListHandler = (e)=>{
+        console.log('e', e);
+        
+        addWatchList(e);
+        setAdd(true);
+        message.success(`${e.name} is added on Watch List`);
+    }
     
     useEffect(()=>{
         findMovieWithId(type, movieID);
@@ -47,6 +57,7 @@ const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastW
                                 {selectedMovie.videos && <Button type="primary" disabled={selectedMovie.videos.results.length <= 0 ? true : false } onClick={()=>setVisible(!visible)} icon={<PlayCircleOutlined />}>
                                     Watch Trailer
                                 </Button>}
+                                <Button type="primary" style={{marginTop: '10px'}} disabled={watchList.filter(e => e.id === selectedMovie.id).length > 0} icon={add ? <CheckOutlined /> : <PlusOutlined />} onClick={()=>addToWatchListHandler(selectedMovie)} >Add to watch list</Button>
                             </div>
                         </Container>
                     </div>}
@@ -76,8 +87,9 @@ const mapStateToProps = (state)=>{
     return {
         selectedMovie: state.movies.selectedMovie,
         casts: state.movies.casts,
-        loading: state.movies.loading
+        loading: state.movies.loading,
+        watchList: state.watchList
     }
 }
 
-export default connect(mapStateToProps, { findMovieWithId: findMovie, findCastWithId: findCast})(Banner);
+export default connect(mapStateToProps, { findMovieWithId: findMovie, findCastWithId: findCast, addWatchList})(Banner);
