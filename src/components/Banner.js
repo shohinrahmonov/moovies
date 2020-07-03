@@ -18,8 +18,6 @@ const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastW
 
 
     const addToWatchListHandler = (e)=>{
-        console.log('e', e);
-        
         addWatchList(e);
         setAdd(true);
         message.success(`${e.name} is added on Watch List`);
