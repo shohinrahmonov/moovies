@@ -166,7 +166,7 @@ export const findQuery = (query)=>{
             if(query.length === 0) return;
             dispatch({ type: Type.FETCH_SEARCH_REQUEST});
 
-            const response = await movieDbApi.get(`/3/search/movie?api_key=${API_KEY}&query=${query}&append_to_response=type`);
+            const response = await movieDbApi.get(`/3/search/multi?api_key=${API_KEY}&query=${query}`);
 
             dispatch({type: Type.FIND_QUERY, payload: response.data});
 

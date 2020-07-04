@@ -18,7 +18,7 @@ const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastW
 
 
     const addToWatchListHandler = (e)=>{
-        addWatchList(e);
+        addWatchList({mediaType: type, ...e});
         setAdd(true);
         message.success(`${e.name ? e.name : e.title} is added on Watch List`);
     }
@@ -45,7 +45,7 @@ const Banner = ({movieID, type, selectedMovie, casts, findMovieWithId, findCastW
                                     <span>{selectedMovie.runtime ?  moment.duration(selectedMovie.runtime, "minutes").format("h[h] mm[min]") : `${selectedMovie.number_of_seasons} seasons`}</span>
                                     <span>{moment(selectedMovie.release_date).format('YYYY')}</span>
                                 </div>
-                                <p className="overview">{selectedMovie.overview}</p>
+                                <p className="overview">{selectedMovie.overview && selectedMovie.overview.length > 600 ? <>{selectedMovie.overview.slice(0, 400)} ... </> : selectedMovie.overview} </p>
                                 <ul className="casts-list">
                                     {casts.crew && casts.crew.slice(0, 3).map(person=> <li key={person.credit_id}>
                                         <span>{person.job}</span>
