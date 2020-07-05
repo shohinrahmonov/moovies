@@ -38,7 +38,7 @@ const MovieList = ({movies, fetchMovieQuery, loading, error}) => {
                         {movies.results && movies.results.length > 0 ? movies.results.map(movie=> 
                             movie.media_type === 'person' ? null : <Link to={{
                             pathname: `/details/${movie.media_type}/${movie.id}`
-                        }} key={movie.id}><Movie image={movie.poster_path ? movie.poster_path : movie.backdrop_path } title={movie.title ? movie.title : movie.name} overview={movie.overview}/>
+                        }} key={movie.id}><Movie type={movie.media_type} movieInfo={movie} image={movie.poster_path ? movie.poster_path : movie.backdrop_path } title={movie.title ? movie.title : movie.name} overview={movie.overview}/>
                         </Link>) 
                             : query && <div className="not-found-class">Not Found</div>}
                     </div>}

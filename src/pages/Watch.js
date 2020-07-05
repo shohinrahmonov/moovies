@@ -18,7 +18,7 @@ const WatchList = ({movies}) => {
         <Container>
                 <MovieListWrapper>
                   {movies.length > 0 ? movies.map(movie=> <Link to={{pathname: `/details/${movie.mediaType}/${movie.id}`}} key={movie.id}>
-                    <Movie image={movie.poster_path} title={movie.title ? movie.title : movie.name} overview={movie.overview}/></Link>) : <h1>Watch List is empty</h1>}
+                    <Movie removeMovie={movie.id} image={movie.poster_path} title={movie.title ? movie.title : movie.name} overview={movie.overview}/></Link>) : <h1>Watch List is empty</h1>}
                 </MovieListWrapper>
         </Container>
         </WatchListWrapper>

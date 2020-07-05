@@ -7,6 +7,22 @@ export const MovieItemWrapper = styled.div`
     position: relative;
     border-radius: 6px;
     height: 100%;
+    button{
+        position: absolute;
+        left: -15px;
+        top: -12px;
+        opacity: 0;
+        z-index: 2;
+        transition: all .25s cubic-bezier(.55,.09,.68,.53);
+    }
+    .ant-tooltip-disabled-compatible-wrapper{
+        position: absolute;
+    }
+    &:hover{
+        button{
+            opacity: 1;
+        }
+    }
     .movie-card{
         height: 340px;
         width: 200px;
@@ -43,7 +59,7 @@ export const MovieItemWrapper = styled.div`
         font-size: 12px;
         width: 100%;
     }
-    span{
+    .anticon-play-circle{
         position: absolute;
         right: 4px;
         top: 4px;

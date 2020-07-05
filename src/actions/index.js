@@ -186,6 +186,11 @@ export const findQuery = (query)=>{
 
 export const addWatchList = (id)=>{
     return {
-        type: 'ADD_WATCHLIST', payload: id
+        type: Type.ADD_WATCHLIST, payload: id
+    }
+}
+export const removeWatchList = (id)=>{
+    return {
+        type: Type.REMOVE_WATCHLIST, payload: id
     }
 }
