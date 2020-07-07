@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import Movie from './MovieItem';
 import { connect } from 'react-redux';
-import { findQuery } from '../actions';
+import { findQuery, resetSearchResult } from '../actions';
 import { Link } from 'react-router-dom';
 import { Input, Spin } from 'antd';
 import { MovieSearchWrapper } from '../style/MovieSearchWrapper'
 import Error from './Error';
 
-const MovieList = ({movies, fetchMovieQuery, loading, error}) => {
+const MovieList = ({movies, fetchMovieQuery, loading, error, resetSearchResult}) => {
 
     const { Search } = Input;
     
     const [query, setQuery] = useState('');
+
+    useEffect(()=>{
+        resetSearchResult();
+    },[])
     
     useEffect(()=>{
         fetchMovieQuery(query);
@@ -55,4 +59,4 @@ const mapStateToProps =(state)=>{
     }
 }
 
-export default connect(mapStateToProps, {fetchMovieQuery: findQuery})(MovieList);
+export default connect(mapStateToProps, {fetchMovieQuery: findQuery, resetSearchResult})(MovieList);

@@ -16,6 +16,8 @@ export default (state = initialState, action)=>{
             return { ...state, loading: false };
         case Type.FETCH_SEARCH_FAIL:
             return { ...state, error: true };
+        case 'RESET_SEARCH_RESULT': 
+            return {};
         default: 
             return state
     }

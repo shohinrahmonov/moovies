@@ -184,6 +184,12 @@ export const findQuery = (query)=>{
     }
 }
 
+export const resetSearchResult = ()=>{
+    return {
+        type: 'RESET_SEARCH_RESULT'
+    }
+}
+
 export const addWatchList = (id)=>{
     return {
         type: Type.ADD_WATCHLIST, payload: id
